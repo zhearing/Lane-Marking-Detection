@@ -42,7 +42,7 @@ class Transformer():
         type       = torch.zeros(self.opt.feaH, self.opt.feaW)
         type_mask  = torch.zeros(self.opt.feaH, self.opt.feaW)
         
-        slice_step_y = int(self.opt.fineH / self.opt.slicing)
+        slice_step_y = self.opt.fineH / self.opt.slicing
         y_slices = list(range(0, self.opt.fineH, slice_step_y))       
         assert len(y_slices) == self.opt.slicing, 'Warning: slicing number wrong!'
 
@@ -66,8 +66,8 @@ class Transformer():
                     ldict[slice] = x
                     
                     # (x, slice) to check positive samples
-                    fea_x = int(x     / fea_step_x)
-                    fea_y = int(slice / fea_step_y)
+                    fea_x = int(x)     / fea_step_x
+                    fea_y = int(slice) / fea_step_y
                     # not every slice has to be an grid !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     if slice % fea_step_y == 0 and 0 <= fea_x and fea_x < self.opt.feaW and 0 <= fea_y and fea_y < self.opt.feaH:
                         # in fea grid
