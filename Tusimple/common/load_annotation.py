@@ -6,8 +6,8 @@ from bs4 import BeautifulSoup
 
 def load_annotation(xml_filename):
     xml = ''
-    with open(xml_filename) as f:
-    #with codecs.open(xml_filename, 'r', encoding = 'zh_CN.utf-8') as f:
+    #with open(xml_filename) as f:
+    with codecs.open(xml_filename, 'r', encoding = 'GBK') as f:
         xml = f.readlines()
     #print xml
     xml = ''.join([line.strip('\t') for line in xml])
